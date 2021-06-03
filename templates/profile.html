@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1 class="title">
+    Welcome, {{name}}!
+</h1>
+
+
+<table width="100%" align="center" border="1">
+    <tr>
+      <td width="10%">ID</td>
+      <td width="30%">Name</td>
+      <td width="30%">Login</td>
+      <td width="10%">Add</td>
+      <td width="10%">Del</td>
+      <td width="10%">Mod</td>
+    </tr>
+{% for row in list1 %}
+    <tr>
+      <td>{{ row['id']}}</td>
+      <td><a href="#" onclick="editUser({{ row['id']}})"><b>{{ row['name']}}</b></a></td>
+      <td>{{ row['login'] }}</td>
+      <td><a href="#" onclick="setRoleState({{ row['id']}}, {{row['radd']}}, 'radd')"><b>[ {{ row['radd'] }} ]</b></a> </td>
+      <td><a href="#" onclick="setRoleState({{ row['id']}}, {{row['rdel']}}, 'rdel')"><b>[ {{ row['rdel'] }} ]</b></a> </td>
+      <td><a href="#" onclick="setRoleState({{ row['id']}}, {{row['rmod']}}, 'rmod')"><b>[ {{ row['rmod'] }} ]</b></a> </td>
+    </tr>
+{% endfor %}
+</table>
+
+
+{% endblock %}
